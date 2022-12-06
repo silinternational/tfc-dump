@@ -14,19 +14,19 @@ which covers most of what we need.
 ## How to use tfc-dump.pl
 1. Install [tfc-ops](https://github.com/silinternational/tfc-ops).
 2. Obtain a Terraform Cloud access token.
-3. `export ATLAS\_TOKEN=_terraform-cloud-access-token_`
+3. export ATLAS\_TOKEN=_terraform-cloud-access-token_
 4. To dump one workspace:
-`tfc-dump.pl --org=`_terraform-cloud-organization_` --workspace=`_terraform-cloud-workspace-name_
+tfc-dump.pl --org _terraform-cloud-organization_ --workspace _terraform-cloud-workspace-name_
 5. To dump all workspaces in an organization:
-`tfc-dump.pl --org=`_terraform-cloud-organization_` --all`
+tfc-dump.pl --org _terraform-cloud-organization_ --all
 
 ## Outputs
 Two files are created for each Terraform Cloud workspace:
 
-- _workspace-name_`-workspace.json`
-- _workspace-name_`-variables.json`
+- _workspace-name_-workspace.json
+- _workspace-name_-variables.json
 
-Variable Sets are exported to files named `varset-`_variable-set-name_`.json`
+Variable Sets are exported to files named varset-_variable-set-name_.json
 with spaces in the variable set name replaced with hyphens (`-`).
 
 ## Restrictions
