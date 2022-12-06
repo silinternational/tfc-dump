@@ -33,3 +33,6 @@ inc/
 /MANIFEST.bak
 /pm_to_blib
 /*.zip
+
+# tfc-dump creates .json files that don't belong in version control
+*.json
