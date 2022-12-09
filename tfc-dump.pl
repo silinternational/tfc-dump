@@ -10,11 +10,12 @@
 # A Terraform Cloud access token must be supplied in the ATLAS_TOKEN environment
 # variable.  
 #
-# Uses curl(1), jq(1), tfc-ops.
+# Uses curl(1), jq(1), tfc-ops(https://github.com/silinternational/tfc-ops).
+# Version 3.0.0 of tfc-ops was used during development.
 #
 # Dale Newby
 # SIL International
-# 12/2/2022
+# December 2, 2022
 
 use strict;
 use warnings;

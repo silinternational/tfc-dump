@@ -12,9 +12,10 @@ The exported information includes workspaces, variables, and variable sets
 which covers most of what we need.
 
 ## How to use tfc-dump.pl
-1. Install [tfc-ops](https://github.com/silinternational/tfc-ops).
+1. Install [tfc-ops](https://github.com/silinternational/tfc-ops). `tfc-dump`
+was tested with `tfc-ops` version 3.0.0.
 2. Obtain a Terraform Cloud access token.
-3. export ATLAS\_TOKEN=_terraform-cloud-access-token_
+3. Set and export the environment variable ATLAS\_TOKEN with the Terraform Cloud access token as its value (e.g., use a command like export ATLAS\_TOKEN=_terraform-cloud-access-token_). Note that preceding the `export` command with a space may prevent the command from being stored in the shell history. Refer to the description of the `HISTCONTROL` shell variable in the `bash` man page for details.
 4. To dump one workspace:
 tfc-dump.pl --org _terraform-cloud-organization_ --workspace _terraform-cloud-workspace-name_
 5. To dump all workspaces in an organization:
