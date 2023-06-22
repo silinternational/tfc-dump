@@ -142,4 +142,6 @@ for (my $ii = 0; $ii < scalar @vs_names; $ii++) {
 	system($curl_cmd);
 }
 
+unlink($tmpfile);
+
 exit(0);
