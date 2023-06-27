@@ -137,8 +137,15 @@ my $filename;
 for (my $ii = 0; $ii < scalar @vs_names; $ii++) {
 	$filename = $vs_names[$ii];
 	$filename =~ s/ /-/g;	# replace spaces with hyphens
+
+	# Get the Variable Set
 	$curl_query = "\"https://app.terraform.io/api/v2/varsets/$vs_ids[$ii]\"";
 	$curl_cmd   = "curl $curl_headers --output varset-${filename}.json $curl_query";
+	system($curl_cmd);
+
+	# Get the variables within the Variable Set
+	$curl_query = "\"https://app.terraform.io/api/v2/varsets/$vs_ids[$ii]/relationships/vars\"";
+	$curl_cmd   = "curl $curl_headers --output varset-${filename}-variables.json $curl_query";
 	system($curl_cmd);
 }
 

@@ -27,8 +27,12 @@ Two files are created for each Terraform Cloud workspace:
 - _workspace-name_-workspace.json
 - _workspace-name_-variables.json
 
-Variable Sets are exported to files named varset-_variable-set-name_.json
-with spaces in the variable set name replaced with hyphens (`-`).
+Two files are created for each Terraform Cloud Variable Set:
+
+- varset-_variable-set-name_.json
+- varset-_variable-set-name_-variables.json
+
+Spaces in the variable set name are replaced with hyphens (`-`).
 
 ## Restrictions
 The code assumes that all of the Terraform Cloud Variable Sets are contained
