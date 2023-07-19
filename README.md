@@ -42,13 +42,13 @@ within the first result page of 20 entries.
 The image created by the Dockerfile will run `tfc-dump`, create a `gzip`'d `tar` file of the resulting files,
 and add the `tar` file to a 1Password vault.
 1. Copy `local.env.dist` to `local.env`.  You will need to set the values for the variables contained in this file.
-2. Obtain a Terraform Cloud access token. Go to https://app.terraform.io/app/settings/tokens to create an API token.
-3. Add the access token value to `local.env`.
-4. If needed, create a 1Password vault to store the backup files in.
-5. Add the 1Password vault name and item name to `local.env`.
-6. Change the `BACKUP_BASE_NAME` in `local.env` if desired.  The default is `tfc-dump` which will create backup
+1. Obtain a Terraform Cloud access token. Go to https://app.terraform.io/app/settings/tokens to create an API token.
+1. Add the access token value to `local.env`.
+1. If needed, create a 1Password vault to store the backup files in.
+1. Add the 1Password vault name and item name to `local.env`.
+1. Change the `BACKUP_BASE_NAME` in `local.env` if desired.  The default is `tfc-dump` which will create backup
 files named `tfc-dump-`_yyyy-mm-dd_`.tar.gz`.
-7. Obtain a 1Password Service Account token. See https://developer.1password.com/docs/service-accounts/get-started/ for details.
-8. Add the 1Password Service Account token to `local.env`.
-9. Build the Docker image:  docker build --tag dump-save:latest .
-9. Run the Docker image:  docker run --env-file=local.env dump-save:latest
+1. Obtain a 1Password Service Account token. See https://developer.1password.com/docs/service-accounts/get-started/ for details.
+1. Add the 1Password Service Account token to `local.env`.
+1. Build the Docker image:  docker build --tag dump-save:latest .
+1. Run the Docker image:  docker run --env-file=local.env dump-save:latest

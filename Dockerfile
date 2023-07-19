@@ -7,8 +7,7 @@ COPY ./dump-and-save.sh  /usr/local/bin/dump-and-save.sh
 COPY ./tfc-dump.pl       /usr/local/bin/tfc-dump.pl
 
 # Install tfc-ops, 1Password CLI, perl, and jq
-RUN chmod +x /usr/local/bin/dump-and-save.sh /usr/local/bin/tfc-dump.pl \
- && cd /tmp \
+RUN cd /tmp \
  && wget https://github.com/silinternational/tfc-ops/releases/download/v${TFC_OPS_VER}/${TFC_OPS_DISTRIB} \
  && tar zxf ${TFC_OPS_DISTRIB} \
  && rm LICENSE README.md ${TFC_OPS_DISTRIB} \
