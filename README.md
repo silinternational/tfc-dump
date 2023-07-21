@@ -49,5 +49,5 @@ The image created by the Dockerfile will run `tfc-dump` and use Restic to back u
 1. Create a Backblaze B2 bucket. Set the `File Lifecycle` to `Keep only the last version`.
 1. Add the B2 bucket name to `RESTIC_REPOSITORY` in `local.env`.
 1. Build the Docker image:  `docker build --tag tfc-backup:latest .`
-1. Initialize the Restic repository (one time only):  `docker run --env-file=local.env --env BACKUP\_MODE=init tfc-backup:latest`
+1. Initialize the Restic repository (one time only):  `docker run --env-file=local.env --env BACKUP_MODE=init tfc-backup:latest`
 1. Run the Docker image:  `docker run --env-file=local.env tfc-backup:latest`
