@@ -3,8 +3,8 @@ FROM alpine:3
 # Variables set with ARG can be overridden at image build time with
 # "--build-arg var=value".  They are not available in the running container.
 ARG restic_ver=0.15.2
-ARG tfc_ops_ver="3.5.1"
-ARG tfc_ops_distrib="tfc-ops_${tfc_ops_ver}_Linux_x86_64.tar.gz"
+ARG tfc_ops_ver=3.5.1
+ARG tfc_ops_distrib=tfc-ops_${tfc_ops_ver}_Linux_x86_64.tar.gz
 
 # Install Restic, tfc-ops, perl, and jq
 RUN cd /tmp \
@@ -18,7 +18,8 @@ RUN cd /tmp \
  && rm LICENSE README.md ${tfc_ops_distrib} \
  && mv tfc-ops /usr/local/bin \
  && apk update \
- && apk add --no-cache perl jq curl
+ && apk add --no-cache perl jq curl \
+ && rm -rf /var/cache/apk/*
 
 COPY ./tfc-backup.sh  /usr/local/bin/tfc-backup.sh
 COPY ./tfc-dump.pl    /usr/local/bin/tfc-dump.pl
