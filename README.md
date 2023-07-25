@@ -44,10 +44,10 @@ The image created by the Dockerfile will run `tfc-dump` and use Restic to back u
 1. Set the values for the variables contained in `local.env`.
 1. Obtain a Terraform Cloud access token. Go to https://app.terraform.io/app/settings/tokens to create an API token.
 1. Add the access token value to `local.env`.
-1. Obtain a Backblaze Application Key. Ensure it has these capabilities: deleteFiles, listBuckets, listFiles, readBuckets, readFiles, writeBuckets, writeFiles.
-1. Add the application key and secret to `local.env` as the values of `B2_ACCOUNT_ID` and `B2_ACCOUNT_KEY`.
 1. Create a Backblaze B2 bucket. Set the `File Lifecycle` to `Keep only the last version`.
 1. Add the B2 bucket name to `RESTIC_REPOSITORY` in `local.env`.
+1. Obtain a Backblaze Application Key. Restrict its access to the B2 bucket you just created. Ensure the application key has these capabilities: deleteFiles, listBuckets, listFiles, readBuckets, readFiles, writeBuckets, writeFiles.
+1. Add the application key and secret to `local.env` as the values of `B2_ACCOUNT_ID` and `B2_ACCOUNT_KEY` respectively.
 1. Build the Docker image:  `docker build --tag tfc-backup:latest .`
 1. Initialize the Restic repository (one time only):  `docker run --env-file=local.env --env BACKUP_MODE=init tfc-backup:latest`
 1. Run the Docker image:  `docker run --env-file=local.env tfc-backup:latest`
