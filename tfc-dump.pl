@@ -2,7 +2,7 @@
 #
 # tfc-dump.pl - dump Terraform Cloud workspace and variable information
 #
-# Usage: tfc-dump.pl --org=org-name {--workspace=name | --all} [--help]
+# Usage: tfc-dump.pl --org=org-name {--workspace=name | --all} [--quiet] [--help]
 #
 # For the supplied Terraform Cloud workspace name, dump the workspace
 # and variable information in JSON format.
@@ -21,11 +21,12 @@ use strict;
 use warnings;
 use Getopt::Long qw(GetOptions);
 
-my $usage = "Usage: $0 --org=org-name {--workspace=name | --all} [--help]\n";
+my $usage = "Usage: $0 --org=org-name {--workspace=name | --all} [--quiet] [--help]\n";
 my $tfc_org_name;	# Terraform Cloud organization name
 my $tfc_workspace_name;	# Terraform Cloud workspace name
 my $tfc_workspace_id;	# Terraform Cloud workspace ID
 my $all_workspaces;
+my $quiet_mode;
 my $help;
 
 Getopt::Long::Configure qw(gnu_getopt);
@@ -33,6 +34,7 @@ GetOptions(
 	'org|o=s'       => \$tfc_org_name,
 	'workspace|w=s' => \$tfc_workspace_name,
 	'all|a'         => \$all_workspaces,
+	'quiet|q'       => \$quiet_mode,
 	'help|h'        => \$help
 ) or die $usage;
 
@@ -48,6 +50,9 @@ if (! $ENV{ATLAS_TOKEN}) {
 my $curl_header1 = "--header \"Authorization: Bearer $ENV{ATLAS_TOKEN}\"";
 my $curl_header2 = "--header \"Content-Type: application/vnd.api+json\"";
 my $curl_headers = "$curl_header1 $curl_header2";
+if (defined($quiet_mode)) {
+	$curl_headers .= " --no-progress-meter";
+}
 my $curl_query;
 my $curl_cmd;
 my $jq_cmd;
