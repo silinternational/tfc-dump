@@ -2,8 +2,7 @@
 
 # tfc-backup.sh - Back up Terraform Cloud workspaces and variables to a Restic repository on Backblaze B2
 #
-# Dale Newby
-# SIL International
+# SIL - GTIS
 # July 20, 2023
 
 # Required environment variables:
